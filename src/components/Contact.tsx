@@ -16,7 +16,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-section-bg">
+    <section id="contact" className="py-24 bg-section-bg-alt">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -56,7 +56,7 @@ const Contact = () => {
             <Button
               type="submit"
               size="lg"
-              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-[0_0_20px_hsl(var(--accent)/0.3)] hover:shadow-[0_0_30px_hsl(var(--accent)/0.5)] transition-all duration-300"
             >
               Send Message
             </Button>
