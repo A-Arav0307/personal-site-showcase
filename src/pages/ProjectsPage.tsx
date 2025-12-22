@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 
@@ -44,56 +45,58 @@ const projects = [
 
 const ProjectsPage = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main className="pt-24">
-        <section className="py-24 bg-section-bg-alt">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-                Featured Projects
-              </h1>
-              <div className="w-20 h-1 bg-accent mx-auto"></div>
+    <PageTransition>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="pt-24">
+          <section className="py-24 bg-section-bg-alt">
+            <div className="container mx-auto px-6">
+              <div className="text-center mb-16">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+                  Featured Projects
+                </h1>
+                <div className="w-20 h-1 bg-accent mx-auto"></div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {projects.map((project, index) => (
+                  <Card
+                    key={index}
+                    className="group hover:shadow-[0_0_30px_hsl(var(--accent)/0.15)] transition-all duration-300 hover:-translate-y-2 border-border bg-card"
+                  >
+                    <CardHeader>
+                      <CardTitle className="flex items-center justify-between text-foreground">
+                        {project.title}
+                        <ExternalLink
+                          size={20}
+                          className="text-muted-foreground group-hover:text-accent transition-colors"
+                        />
+                      </CardTitle>
+                      <CardDescription className="text-muted-foreground">
+                        {project.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-secondary text-secondary-foreground text-sm rounded-full"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <Card
-                  key={index}
-                  className="group hover:shadow-[0_0_30px_hsl(var(--accent)/0.15)] transition-all duration-300 hover:-translate-y-2 border-border bg-card"
-                >
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between text-foreground">
-                      {project.title}
-                      <ExternalLink
-                        size={20}
-                        className="text-muted-foreground group-hover:text-accent transition-colors"
-                      />
-                    </CardTitle>
-                    <CardDescription className="text-muted-foreground">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-secondary text-secondary-foreground text-sm rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </PageTransition>
   );
 };
 
