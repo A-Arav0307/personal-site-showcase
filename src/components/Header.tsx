@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,12 +14,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header
@@ -28,38 +25,46 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <button
-          onClick={() => scrollToSection("hero")}
+        <Link
+          to="/"
           className="text-2xl font-bold text-foreground hover:text-accent transition-colors"
         >
           Portfolio
-        </button>
+        </Link>
         
         <nav className="hidden md:flex items-center gap-8">
-          <button
-            onClick={() => scrollToSection("about")}
-            className="text-foreground/80 hover:text-accent transition-colors font-medium"
+          <Link
+            to="/about"
+            className={`transition-colors font-medium ${
+              isActive("/about") 
+                ? "text-accent" 
+                : "text-foreground/80 hover:text-accent"
+            }`}
           >
             About
-          </button>
-          <button
-            onClick={() => scrollToSection("projects")}
-            className="text-foreground/80 hover:text-accent transition-colors font-medium"
+          </Link>
+          <Link
+            to="/projects"
+            className={`transition-colors font-medium ${
+              isActive("/projects") 
+                ? "text-accent" 
+                : "text-foreground/80 hover:text-accent"
+            }`}
           >
             Projects
-          </button>
-          <button
-            onClick={() => scrollToSection("skills")}
-            className="text-foreground/80 hover:text-accent transition-colors font-medium"
+          </Link>
+          <Link
+            to="/skills"
+            className={`transition-colors font-medium ${
+              isActive("/skills") 
+                ? "text-accent" 
+                : "text-foreground/80 hover:text-accent"
+            }`}
           >
             Skills
-          </button>
-          <Button
-            onClick={() => scrollToSection("contact")}
-            variant="default"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground"
-          >
-            Contact
+          </Link>
+          <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Link to="/contact">Contact</Link>
           </Button>
         </nav>
       </div>

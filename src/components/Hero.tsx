@@ -1,14 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
       id="hero"
@@ -42,30 +35,22 @@ const Hero = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up animate-delay-400">
           <Button
+            asChild
             size="lg"
-            onClick={() => scrollToSection("projects")}
             className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 shadow-[0_0_30px_hsl(var(--accent)/0.3)] hover:shadow-[0_0_40px_hsl(var(--accent)/0.5)] transition-all duration-300"
           >
-            View My Work
+            <Link to="/projects">View My Work</Link>
           </Button>
           <Button
+            asChild
             size="lg"
             variant="outline"
-            onClick={() => scrollToSection("contact")}
             className="border-border/50 text-foreground hover:bg-secondary hover:border-accent/50 text-lg px-8 backdrop-blur-sm"
           >
-            Get In Touch
+            <Link to="/contact">Get In Touch</Link>
           </Button>
         </div>
       </div>
-      
-      <button
-        onClick={() => scrollToSection("about")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-accent animate-bounce cursor-pointer transition-colors"
-        aria-label="Scroll to about section"
-      >
-        <ArrowDown size={32} />
-      </button>
     </section>
   );
 };
