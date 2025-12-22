@@ -48,9 +48,15 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         "section-bg": "hsl(var(--section-bg))",
+        "section-bg-alt": "hsl(var(--section-bg-alt))",
+        glow: {
+          primary: "hsl(var(--glow-primary))",
+          secondary: "hsl(var(--glow-secondary))",
+          tertiary: "hsl(var(--glow-tertiary))",
+        },
       },
       backgroundImage: {
-        "hero-gradient": "linear-gradient(135deg, hsl(var(--hero-gradient-start)), hsl(var(--hero-gradient-end)))",
+        "hero-gradient": "linear-gradient(135deg, hsl(var(--glow-primary)), hsl(var(--glow-secondary)))",
       },
       transitionTimingFunction: {
         "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",

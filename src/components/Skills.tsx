@@ -20,7 +20,7 @@ const Skills = () => {
           {skills.map((skillGroup, index) => (
             <div
               key={index}
-              className="p-6 rounded-lg bg-card border border-border hover:shadow-lg transition-shadow"
+              className="p-6 rounded-lg bg-card border border-border hover:shadow-[0_0_25px_hsl(var(--accent)/0.1)] hover:border-accent/30 transition-all duration-300"
             >
               <h3 className="text-xl font-semibold mb-4 text-accent">
                 {skillGroup.category}

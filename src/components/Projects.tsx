@@ -42,7 +42,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-section-bg">
+    <section id="projects" className="py-24 bg-section-bg-alt">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -55,7 +55,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-border bg-card"
+              className="group hover:shadow-[0_0_30px_hsl(var(--accent)/0.15)] transition-all duration-300 hover:-translate-y-2 border-border bg-card"
             >
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-foreground">
