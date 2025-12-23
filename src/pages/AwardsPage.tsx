@@ -7,7 +7,7 @@ import CursorSpotlight from "@/components/CursorSpotlight";
 const awards = [
     {
         title: "Top 50 FTC Robotics Team Worldwide",
-        subtitle: "out of 8000 teams '25",
+        subtitle: "Placed top 50 out of 8000 teams worldwide in 2025, qualifying for the World Championships.",
         icon: "🏆",
     },
     {
@@ -17,12 +17,12 @@ const awards = [
     },
     {
         title: "National Control Award",
-        subtitle: "for Best Software",
+        subtitle: "Given to teams that have the best autonomous and teleop control software.",
         icon: "💻",
     },
     {
         title: "Inspire Award",
-        subtitle: "for Motivating and Sustaining Other Teams",
+        subtitle: "Served as a mentor for 3 years (2023-2025) and helped teams improve their skills in competition and qualify for National Championships.",
         icon: "⭐",
     },
 ];

@@ -41,7 +41,7 @@ Applied bootstrapping (bagging) and hyperparameter tuning to improve model gener
     link: "#",
   },
   {
-    title: "ML Rover",
+    title: "CV Model for Lunar Rover",
     description: "YOLO-based object detection system for distinguishing between mallets and hammers with real-time inference. Trained custom YOLO models (v8 & v11) for tool classification with high accuracy.",
     tech: ["Python", "YOLO", "Computer Vision", "PyTorch"],
     link: "https://github.com/A-Arav0307/ML_Rover",
