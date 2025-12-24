@@ -1,8 +1,26 @@
-# Welcome to your Lovable project
+# Aarav Gupta - Personal Portfolio
 
-## Project info
+## About This Website
 
-**URL**: https://lovable.dev/projects/596d9fad-7938-4c3f-a125-451fe2991dcb
+A modern, interactive portfolio showcasing projects in robotics, AI/ML, and web development. Rice University freshman with expertise in Computer Vision, Machine Learning, and Algorithmic Design.
+
+### Features
+
+**Pages**
+- **Home**: Introduction with animated gradient effects and cursor spotlight
+- **About**: Profile, background, and career stats with interactive animations
+- **Projects**: 6 projects with flip-card interactions including FTC robotics, ML/CV systems, and full-stack web apps
+- **Skills**: Technology showcase with official logos for Python, Java, React, PyTorch, YOLO, and more
+- **Research**: Blog documenting AI/ML research (HuggingFace transformers, GPU kernels, decoder models)
+- **Awards**: FTC competition achievements including Top 50 worldwide and #1 in Mexico
+- **Contact**: Get in touch form with social links
+
+**Interactive Elements**
+- Cursor spotlight effect that follows mouse movement
+- Animated backgrounds (gradient orbs, particles, waves, grid, aurora, bubbles)
+- 3D flip cards for project details
+- Smooth page transitions with Framer Motion
+- Responsive design with Tailwind CSS
 
 ## How can I edit this code?
 
@@ -34,40 +52,3 @@ npm i
 
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/596d9fad-7938-4c3f-a125-451fe2991dcb) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)

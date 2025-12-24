@@ -5,6 +5,8 @@ import AboutPage from "@/pages/AboutPage";
 import ProjectsPage from "@/pages/ProjectsPage";
 import SkillsPage from "@/pages/SkillsPage";
 import ContactPage from "@/pages/ContactPage";
+import ResearchBlog from "@/pages/ResearchBlog";
+import AwardsPage from "@/pages/AwardsPage";
 import NotFound from "@/pages/NotFound";
 
 const AnimatedRoutes = () => {
@@ -17,6 +19,8 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/research" element={<ResearchBlog />} />
+        <Route path="/awards" element={<AwardsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

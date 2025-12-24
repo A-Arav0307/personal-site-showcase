@@ -18,50 +18,64 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm py-4"
-          : "bg-transparent py-6"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/95 backdrop-blur-md shadow-sm py-4"
+        : "bg-transparent py-6"
+        }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link
           to="/"
           className="text-2xl font-bold text-foreground hover:text-accent transition-colors"
         >
-          Portfolio
+          Home
         </Link>
-        
+
         <nav className="hidden md:flex items-center gap-8">
           <Link
             to="/about"
-            className={`transition-colors font-medium ${
-              isActive("/about") 
-                ? "text-accent" 
-                : "text-foreground/80 hover:text-accent"
-            }`}
+            className={`transition-colors font-medium ${isActive("/about")
+              ? "text-accent"
+              : "text-foreground/80 hover:text-accent"
+              }`}
           >
             About
           </Link>
           <Link
             to="/projects"
-            className={`transition-colors font-medium ${
-              isActive("/projects") 
-                ? "text-accent" 
-                : "text-foreground/80 hover:text-accent"
-            }`}
+            className={`transition-colors font-medium ${isActive("/projects")
+              ? "text-accent"
+              : "text-foreground/80 hover:text-accent"
+              }`}
           >
             Projects
           </Link>
           <Link
             to="/skills"
-            className={`transition-colors font-medium ${
-              isActive("/skills") 
-                ? "text-accent" 
-                : "text-foreground/80 hover:text-accent"
-            }`}
+            className={`transition-colors font-medium ${isActive("/skills")
+              ? "text-accent"
+              : "text-foreground/80 hover:text-accent"
+              }`}
           >
             Skills
+          </Link>
+          <Link
+            to="/research"
+            className={`transition-colors font-medium ${isActive("/research")
+              ? "text-accent"
+              : "text-foreground/80 hover:text-accent"
+              }`}
+          >
+            Research
+          </Link>
+          <Link
+            to="/awards"
+            className={`transition-colors font-medium ${isActive("/awards")
+                ? "text-accent"
+                : "text-foreground/80 hover:text-accent"
+              }`}
+          >
+            Awards
           </Link>
           <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
             <Link to="/contact">Contact</Link>
