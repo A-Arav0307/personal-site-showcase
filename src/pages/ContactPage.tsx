@@ -142,14 +142,14 @@ const ContactPage = () => {
 
                   <div className="flex justify-center gap-6">
                     <a
-                      href="mailto:alex@example.com"
+                      href="mailto:@ag332@rice.edu"
                       className="p-3 rounded-full bg-card border border-border hover:bg-accent hover:border-accent text-foreground hover:text-accent-foreground transition-colors"
                       aria-label="Email"
                     >
                       <Mail size={24} />
                     </a>
                     <a
-                      href="https://github.com"
+                      href="https://github.com/A-Arav0307"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-3 rounded-full bg-card border border-border hover:bg-accent hover:border-accent text-foreground hover:text-accent-foreground transition-colors"
@@ -158,7 +158,7 @@ const ContactPage = () => {
                       <Github size={24} />
                     </a>
                     <a
-                      href="https://linkedin.com"
+                      href="https://www.linkedin.com/in/aarav-rajeev-gupta-909b172aa/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-3 rounded-full bg-card border border-border hover:bg-accent hover:border-accent text-foreground hover:text-accent-foreground transition-colors"
@@ -167,7 +167,7 @@ const ContactPage = () => {
                       <Linkedin size={24} />
                     </a>
                     <a
-                      href="https://twitter.com"
+                      href="https://twitter.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-3 rounded-full bg-card border border-border hover:bg-accent hover:border-accent text-foreground hover:text-accent-foreground transition-colors"
