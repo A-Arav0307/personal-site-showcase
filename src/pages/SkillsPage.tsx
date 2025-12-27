@@ -37,15 +37,7 @@ const skills = [
       { name: "Machine Learning", icon: "https://cdn.simpleicons.org/tensorflow/FF6F00" },
     ]
   },
-  {
-    category: "Robotics",
-    items: [
-      { name: "FTC", icon: "https://cdn.simpleicons.org/first/0066B3" },
-      { name: "Android Robotics", icon: "https://cdn.simpleicons.org/android/3DDC84" },
-      { name: "Motion Planning", icon: "https://cdn.simpleicons.org/ros/22314E" },
-      { name: "Autonomous Systems", icon: "https://cdn.simpleicons.org/robot/00FFAA" },
-    ]
-  },
+  // Robotics section removed ✅
   {
     category: "Tools & Frameworks",
     items: [
@@ -53,7 +45,7 @@ const skills = [
       { name: "Gradle", icon: "https://cdn.simpleicons.org/gradle/02303A" },
       { name: "Jupyter", icon: "https://cdn.simpleicons.org/jupyter/F37626" },
       { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032" },
-      { name: "Google OAuth", icon: "https://cdn.simpleicons.org/google/4285F4" },
+      { name: "ROS", icon: "https://cdn.simpleicons.org/ros/22314E" }, // swapped from Google OAuth ✅
     ]
   },
 ];
