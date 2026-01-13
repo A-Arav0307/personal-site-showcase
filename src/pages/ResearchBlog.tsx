@@ -6,7 +6,7 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import CursorSpotlight from "@/components/CursorSpotlight";
 import { Check, Copy } from "lucide-react";
 import 'katex/dist/katex.min.css';
-import { BlockMath } from 'react-katex';
+import katex from 'katex';
 
 type ViewLevel = 'categories' | 'entries' | 'detail';
 
@@ -31,9 +31,15 @@ const ResearchBlog = () => {
             >
                 {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} className="text-purple-300" />}
             </button>
-            <div className="text-purple-100 py-2">
-                <BlockMath math={latex} />
-            </div>
+            <div
+                className="text-purple-100 py-2"
+                dangerouslySetInnerHTML={{
+                    __html: katex.renderToString(latex, {
+                        displayMode: true,
+                        throwOnError: false
+                    })
+                }}
+            />
             <div className="mt-4 pt-4 border-t border-purple-500/10 opacity-0 group-hover/eq:opacity-100 transition-opacity">
                 <p className="text-[10px] uppercase tracking-widest text-purple-400/50 mb-2">Raw LaTeX Source</p>
                 <pre className="text-xs font-mono text-purple-300/60 bg-black/20 p-2 rounded">
