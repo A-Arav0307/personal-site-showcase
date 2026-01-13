@@ -77,15 +77,6 @@ const Header = () => {
           >
             Awards
           </Link>
-          <Link
-            to="/visitors"
-            className={`transition-colors font-medium ${isActive("/visitors")
-              ? "text-accent"
-              : "text-foreground/80 hover:text-accent"
-              }`}
-          >
-            Visitors
-          </Link>
           <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
             <Link to="/contact">Contact</Link>
           </Button>
