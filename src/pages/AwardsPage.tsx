@@ -81,5 +81,4 @@ const AwardsPage = () => {
         </PageTransition>
     );
 };
-
 export default AwardsPage;

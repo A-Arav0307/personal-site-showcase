@@ -5,7 +5,6 @@ import PageTransition from "@/components/PageTransition";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import CursorSpotlight from "@/components/CursorSpotlight";
 import { Check, Copy } from "lucide-react";
-import 'katex/dist/katex.min.css';
 import katex from 'katex';
 
 type ViewLevel = 'categories' | 'entries' | 'detail';

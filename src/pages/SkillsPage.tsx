@@ -45,7 +45,7 @@ const skills = [
       { name: "Gradle", icon: "https://cdn.simpleicons.org/gradle/02303A" },
       { name: "Jupyter", icon: "https://cdn.simpleicons.org/jupyter/F37626" },
       { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032" },
-      { name: "ROS", icon: "https://cdn.simpleicons.org/ros/22314E" }, // swapped from Google OAuth ✅
+      { name: "ROS", icon: "https://cdn.simpleicons.org/ros/22314E" }, 
     ]
   },
 ];
