@@ -4,6 +4,9 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import CursorSpotlight from "@/components/CursorSpotlight";
+import { Check, Copy } from "lucide-react";
+import 'katex/dist/katex.min.css';
+import { BlockMath } from 'react-katex';
 
 type ViewLevel = 'categories' | 'entries' | 'detail';
 
@@ -11,6 +14,36 @@ const ResearchBlog = () => {
     const [currentView, setCurrentView] = useState<ViewLevel>('categories');
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedEntry, setSelectedEntry] = useState<string | null>(null);
+    const [copied, setCopied] = useState(false);
+
+    const copyToClipboard = (text: string) => {
+        navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    const EquationBox = ({ latex }: { latex: string }) => (
+        <div className="relative group/eq my-6 rounded-lg bg-black/40 border border-purple-500/30 p-6 overflow-x-auto transition-all hover:bg-black/60">
+            <button
+                onClick={() => copyToClipboard(latex)}
+                className="absolute top-3 right-3 p-2 z-20 rounded-md bg-purple-500/20 hover:bg-purple-500/40 border border-purple-500/30 transition-all opacity-0 group-hover/eq:opacity-100"
+                title="Copy LaTeX"
+            >
+                {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} className="text-purple-300" />}
+            </button>
+            <div className="text-purple-100 py-2">
+                <BlockMath math={latex} />
+            </div>
+            <div className="mt-4 pt-4 border-t border-purple-500/10 opacity-0 group-hover/eq:opacity-100 transition-opacity">
+                <p className="text-[10px] uppercase tracking-widest text-purple-400/50 mb-2">Raw LaTeX Source</p>
+                <pre className="text-xs font-mono text-purple-300/60 bg-black/20 p-2 rounded">
+                    <code>{latex}</code>
+                </pre>
+            </div>
+        </div>
+    );
+
+
 
     const handleCategoryClick = (category: string) => {
         setSelectedCategory(category);
@@ -48,7 +81,7 @@ const ResearchBlog = () => {
                                     </h1>
                                     <div className="w-20 h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto"></div>
                                     <p className="text-white mt-6">
-                                        Documenting my journey in AI/ML research and experimentation
+                                        Documenting my journey in computer systems, ML, and other projects
                                     </p>
                                 </div>
 
@@ -69,6 +102,25 @@ const ResearchBlog = () => {
                                                 Click to explore entries →
                                             </p>
                                         </div>
+                                    </div>
+
+
+                                )}
+
+                                {currentView === 'categories' && (
+                                    <div
+                                        onClick={() => handleCategoryClick('deep-learning')}
+                                        className="group cursor-pointer p-12 rounded-lg bg-gradient-to-br from-purple-900/20 to-pink-900/20 border-2 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:-translate-y-2"
+                                    >
+                                        <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-4">
+                                            Bridge
+                                        </h2>
+                                        <p className="text-center text-white text-lg">
+                                            First step in launching a startup with a group of friends; a dating app focused on creating meaningful conections between people, taking inspiration from LinkedIn and Snapchat.
+                                        </p>
+                                        <p className="text-center text-purple-300 mt-4 text-sm">
+                                            Click to explore entries →
+                                        </p>
                                     </div>
                                 )}
 
@@ -97,12 +149,58 @@ const ResearchBlog = () => {
                                                     Click to read full entry →
                                                 </p>
                                             </div>
+
+                                            <div
+                                                onClick={() => handleEntryClick('jan-12')}
+                                                className="group cursor-pointer p-8 rounded-lg bg-gradient-to-br from-purple-900/20 to-pink-900/20 border-2 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:-translate-y-2"
+                                            >
+                                                <p className="text-sm text-purple-400 mb-2">January 12, 2026</p>
+                                                <h3 className="text-2xl font-bold text-white mb-3">
+                                                    How ChatGPT and other LLMs work: Decoder-Only Transformers
+                                                </h3>
+                                                <p className="text-white">
+                                                    A deep dive into the inner workings of decoder-only transformers, exploring the math behind self-attention and masked self-attention.
+                                                </p>
+                                                <p className="text-purple-300 mt-4 text-sm">
+                                                    Click to read full entry →
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
 
+                                {currentView === 'entries' && selectedCategory === 'deep-learning' && (
+
+                                    <div>
+                                        <button
+                                            onClick={handleBack}
+                                            className="mb-8 text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-2"
+                                        >
+                                            ← Back to Categories
+                                        </button>
+                                        <div className="grid grid-cols-1 gap-8">
+                                            <div
+                                                onClick={() => handleEntryClick('dec-20')}
+                                                className="group cursor-pointer p-8 rounded-lg bg-gradient-to-br from-purple-900/20 to-pink-900/20 border-2 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:-translate-y-2"
+                                            >
+                                                <p className="text-sm text-purple-400 mb-2">December 20, 2024</p>
+                                                <h3 className="text-2xl font-bold text-white mb-3">
+                                                    What is Bridge?
+                                                </h3>
+                                                <p className="text-white">
+                                                    Explanation of Bridge as a platform and current progress on the project.
+                                                </p>
+                                                <p className="text-purple-300 mt-4 text-sm">
+                                                    Click to read full entry →
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                )}
+
                                 {/* Detail View */}
-                                {currentView === 'detail' && selectedEntry === 'dec-20' && (
+                                {currentView === 'detail' && selectedCategory === 'computer-systems' && selectedEntry === 'dec-20' && (
                                     <div>
                                         <button
                                             onClick={handleBack}
@@ -149,7 +247,7 @@ const ResearchBlog = () => {
 
                                                 <div>
                                                     <h3 className="text-xl font-semibold text-purple-400 mb-3">
-                                                        Decoder-Only Model Experiment
+                                                        Decoder-Only Model Experiment utilizing HuggingFace Transformers
                                                     </h3>
                                                     <p className="text-white leading-relaxed mb-4">
                                                         Built and modified a decoder-only transformer workflow for next-token prediction using GPT2LMHeadModel. Configured vocab size/token limits and ran complete tokenization → inference → logits pipeline.
@@ -211,6 +309,150 @@ const ResearchBlog = () => {
                                                         • Compare GPU vs CPU performance systematically
                                                         • Attempt writing custom GPU kernels for specific operations
                                                     </p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                )}
+
+                                {currentView === 'detail' && selectedCategory === 'computer-systems' && selectedEntry === 'jan-12' && (
+                                    <div>
+                                        <button
+                                            onClick={handleBack}
+                                            className="mb-8 text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-2"
+                                        >
+                                            ← Back to Entries
+                                        </button>
+                                        <article className="p-8 rounded-lg bg-card border-2 border-purple-500/30">
+                                            <div className="mb-6">
+                                                <p className="text-sm text-purple-400 mb-2">January 12, 2026</p>
+                                                <h2 className="text-3xl font-bold text-white mb-4">
+                                                    Decoder-Only Transformer Architecture
+                                                </h2>
+                                                <p className="text-lg text-white leading-relaxed">
+                                                    An exploration into how decoder-only Transformers facilitate autoregressive text generation by predicting one token at a time, conditioned on previous tokens in the sequence.
+                                                </p>
+                                            </div>
+
+                                            <div className="space-y-8">
+                                                <div>
+                                                    <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                                                        Architecture Overview
+                                                    </h3>
+                                                    <div className="rounded-lg overflow-hidden border border-purple-500/30 bg-white/5 p-4 mb-4">
+                                                        <img
+                                                            src="/images/research/decoder-diagram.png"
+                                                            alt="Decoder-Only Transformer Diagram"
+                                                            className="w-full h-auto"
+                                                        />
+                                                    </div>
+                                                    <p className="text-white leading-relaxed">
+                                                        The diagram above illustrates the internal flow of a single decoder layer, capturing the interaction between token embeddings, query-key-value projections, and the resulting attention scores.
+                                                    </p>
+                                                </div>
+
+                                                <div>
+                                                    <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                                                        Mathematical Foundations
+                                                    </h3>
+                                                    <p className="text-white leading-relaxed">
+                                                        The core of the transformer's power lies in the Masked Self-Attention mechanism. For each token embedding <i>x<sub>i</sub></i>, the model computes:
+                                                    </p>
+                                                    <EquationBox latex={`Q_i = x_i W_Q, \quad K_i = x_i W_K, \quad V_i = x_i W_V`} />
+
+                                                    <p className="text-white leading-relaxed">
+                                                        The attention score between token <i>i</i> and a previous token <i>j ≤ i</i> is given by the scaled dot product:
+                                                    </p>
+                                                    <EquationBox latex={`s_{ij} = \\frac{Q_i K_j^T}{\\sqrt{d_k}}`} />
+
+                                                    <p className="text-white leading-relaxed mt-4">
+                                                        Finally, these raw attention scores are converted into attention weights using the softmax function to ensure causality:
+                                                    </p>
+                                                    <EquationBox latex={`\\alpha_{ij} = \\frac{e^{s_{ij}}}{\\sum_{j' \\le i} e^{s_{ij'}}}`} />
+                                                </div>
+
+                                                <div>
+                                                    <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                                                        Implementing Causal Masking and the Softmax Function
+                                                    </h3>
+                                                    <p className="text-white leading-relaxed">
+                                                        The Softmax function converts raw weights into probabilities, and ensures that the sum of all the weights equals to 1. This is done by normalizing the raw weights and then dividing them by the square root of the dimension of the key vector.
+                                                        Casual masking refers to the process of ensuring that the transformers take into context the previous tokens in the sequence, in order to generate the next token.
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                )}
+
+                                {currentView === 'detail' && selectedCategory === 'deep-learning' && selectedEntry === 'dec-20' && (
+                                    <div>
+                                        <button
+                                            onClick={handleBack}
+                                            className="mb-8 text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-2"
+                                        >
+                                            ← Back to Entries
+                                        </button>
+                                        <article className="p-8 rounded-lg bg-card border-2 border-purple-500/30">
+                                            <div className="mb-6">
+                                                <p className="text-sm text-purple-400 mb-2">December 25, 2025</p>
+                                                <h2 className="text-3xl font-bold text-white mb-4">
+                                                    Bridge: A Curation Ritual for Meaningful Connection
+                                                </h2>
+                                                <p className="text-lg text-white leading-relaxed">
+                                                    Bridge is a social networking platform that treats dating as a <b>coordination problem</b>, not a consumption problem. It replaces the exhausting "swipe-and-shop" dynamic with a curated matchmaking ritual powered by community consensus.
+                                                </p>
+                                            </div>
+
+                                            <div className="space-y-8">
+                                                <div className="flex flex-col md:flex-row justify-center gap-6">
+                                                    <div className="rounded-lg overflow-hidden border border-purple-500/30 max-w-[280px] shadow-lg">
+                                                        <img
+                                                            src="/images/research/bridge-proposals.png"
+                                                            alt="Bridge Matching Ritual"
+                                                            className="w-full h-auto"
+                                                        />
+                                                    </div>
+                                                    <div className="rounded-lg overflow-hidden border border-purple-500/30 max-w-[280px] shadow-lg">
+                                                        <img
+                                                            src="/images/research/bridge-profile.png"
+                                                            alt="Bridge Profile System"
+                                                            className="w-full h-auto"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <h3 className="text-xl font-semibold text-purple-400 mb-3">Core Philosophy</h3>
+                                                    <p className="text-white leading-relaxed mb-4">
+                                                        Bridge is built on the belief that community insight is more objective than individual impulse. Every day at 8 PM, users participate in a 5-minute matchmaking ritual, voting on proposals for others. It combines the <b>engagement signals</b> of Snapchat with the <b>consensus-driven validation</b> of LinkedIn.
+                                                    </p>
+                                                    <ul className="list-disc list-inside text-white space-y-2 ml-4">
+                                                        <li><b>Quality Through Scarcity:</b> Matches are rare and intentional.</li>
+                                                        <li><b>Reputation (Karma):</b> Voting accuracy and participation build your community standing.</li>
+                                                        <li><b>Consensus Algorithm:</b> Proposals only advance when they reach a strict threshold of community validation.</li>
+                                                    </ul>
+                                                </div>
+
+                                                <div className="p-4 rounded-lg bg-purple-900/20 border border-purple-500/30">
+                                                    <h3 className="text-xl font-semibold text-purple-400 mb-3">Technical Stack & Roadmap</h3>
+                                                    <p className="text-white leading-relaxed mb-4">
+                                                        The Bridge architecture is built with high-performance <b>TypeScript</b> on the frontend and a scalable <b>Python</b> backend to handle our proprietary consensus algorithms.
+                                                    </p>
+                                                    <p className="text-white leading-relaxed">
+                                                        <b>Future Goal:</b> Aim to launch mid-2026 (February/March 2026) with a beta version of the app.
+                                                        <br />
+                                                    </p>
+                                                    <p className="text-white leading-relaxed mb-4">
+                                                        Things that we are working on:
+                                                    </p>
+                                                    <ul className="list-disc list-inside text-white space-y-2 ml-4">
+                                                        <li>Notification System</li>
+                                                        <li>Verification with Student Email</li>
+                                                        <li>Cloud-Host with Azure</li>
+                                                        <li>CV model to detect profiles created with AI</li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </article>
